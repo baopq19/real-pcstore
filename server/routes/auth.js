@@ -55,4 +55,49 @@ router.post('/register', async (req, res) => {
 	}
 });
 
+// @route POST api/auth/login
+// @desc Login user
+// @access Public
+// blah blah
+router.post('/login', async (req, res) => {
+	const { username, password } = req.body;
+
+	//Simple validate if empty
+	if (!username || !password)
+		return res.status(400).json({
+			success: false,
+			message: 'Username/Password can not be empty',
+		});
+
+	try {
+		const user = await User.findOne({ username });
+		if (!user)
+			return res.status(401).json({
+				success: false,
+				message: 'Username/password are not match',
+			});
+
+		const authenticated = await argon2.verify(user.password, password);
+		if (!authenticated)
+			return res.status(401).json({
+				success: false,
+				message: 'Username/password are not match',
+			});
+
+		//authenticated
+		const accessToken = jwt.sign(
+			{ userId: user._id },
+			process.env.ACCESS_TOKEN_SECRET
+		);
+		return res.json({
+			success: true,
+			message: 'User login success',
+			accessToken,
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ success: false, message: 'Internal server error' });
+	}
+});
+
 module.exports = router;

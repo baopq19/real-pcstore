@@ -8,16 +8,19 @@ const ItemSchema = new Schema({
 	},
 	brandId: {
 		type: Number,
-		min: 1,
+		min: 0,
 		max: 10000,
+		default: 0,
 	},
 	price: {
 		type: Number,
 		min: 0,
+		default: 0,
 	},
 	status: {
 		type: String,
 		enum: ['DELETED', 'OUT OF STOCK', 'AVAILABLE'],
+		default: 'OUT OF STOCK',
 	},
 	image: String,
 	category: {

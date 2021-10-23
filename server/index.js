@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
+const itemRouter = require('./routes/item');
 
 const DB_NAME = 'real-pcstore';
 
@@ -29,7 +30,8 @@ const app = express();
 app.use(express.json());
 
 app.use(`/api/auth`, authRouter);
+app.use(`/api/items`, itemRouter);
 
-const PORT = 5000;
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(process.env.PORT, () =>
+	console.log(`Server started on port ${process.env.PORT}`)
+);
