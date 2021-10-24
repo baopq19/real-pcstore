@@ -1,3 +1,19 @@
+:root {
+	--color-primary: #334155;
+	--color-secondary: #7e22ce;
+	/* ... */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.input-gr-lb {
+		@apply text-gray-300 text-2xs font-semibold uppercase mb-1;
+	}
+
+	.input {
+		@apply w-full p-1.5 rounded text-white bg-primary-900 focus:outline-black;
+	}
+}

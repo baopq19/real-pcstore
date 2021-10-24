@@ -1,28 +1,8 @@
 import React, { useState } from 'react';
-import LoginSVG from '../../icons/LoginSVG';
+import LoginSVG from '../../assets/icons/LoginSVG';
 import { useFormik } from 'formik';
-import {
-	Button,
-	FormControl,
-	IconButton,
-	InputAdornment,
-	InputLabel,
-	OutlinedInput,
-	TextField,
-} from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 export default function Login() {
-	const inputSharedConfig = {
-		variant: 'outlined',
-		size: 'small',
-		margin: 'dense',
-		fullWidth: true,
-		onChange: (e) => {
-			formik.setFieldValue(e.target.name, e.target.value);
-		},
-	};
-
 	const [showPassword, setShowPassword] = useState(false);
 
 	const formik = useFormik({
@@ -40,62 +20,60 @@ export default function Login() {
 
 	return (
 		<div
-			className='sm:container mx-auto min-h-screen
-					flex items-center bg-red-500'>
-			<div className='flex w-full sm:max-w-2xl mx-auto p-4 rounded bg-green-500'>
-				<div className='w-full md:w-7/12 p-2'>
-					<p className='text-xl text-bold text-left mb-2'>Athur! Shalom</p>
-					<form onSubmit={formik.handleSubmit}>
-						<TextField
-							name='username'
-							label='Username'
-							{...inputSharedConfig}
-						/>
-						<FormControl {...inputSharedConfig}>
-							<InputLabel htmlFor='outlined-adornment-password'>
-								Password
-							</InputLabel>
-							<OutlinedInput
-								id='outlined-adornment-password'
-								name='password'
-								type={showPassword ? 'text' : 'password'}
-								value={formik.values.password}
-								endAdornment={
-									<InputAdornment position='end'>
-										<IconButton
-											aria-label='toggle password visibility'
-											onClick={() => {
-												console.log('aaa');
-												setShowPassword(!showPassword);
-											}}
-											edge='end'>
-											{showPassword ? <VisibilityOff /> : <Visibility />}
-										</IconButton>
-									</InputAdornment>
-								}
-								label='Password'
-							/>
-						</FormControl>
-						<a
-							className='text-xs block -mt-0.75 text-blue-500 font-semibold'
-							href='https://google.com'>
-							Lost your password? Find it on google
-						</a>
-						<div className='mt-4'>
-							<Button variant='contained' fullWidth type='submit'>
-								Login
-							</Button>
-						</div>
-						<p className='text-xs mt-1 text-gray-500'>
-							Need an account?
-							<a className='ml-1 font-semibold text-blue-500' href='/register'>
-								Register
-							</a>
+			style={{
+				backgroundImage: 'url("./images/loginBG.png")',
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+				backgroundRepeat: 'norepeat',
+			}}>
+			<div className='sm:container mx-auto min-h-screen flex items-center'>
+				<div className='flex w-full sm:max-w-2xl mx-auto p-4 rounded bg-primary-800'>
+					<div className='w-full md:w-7/12 p-2'>
+						<p className='text-xl text-bold text-left text-white mb-4'>
+							Athur! Shalom
 						</p>
-					</form>
-				</div>
-				<div className='hidden md:flex justify-center items-center p-4'>
-					<LoginSVG className='w-full' />
+						<form onSubmit={formik.handleSubmit}>
+							<div>
+								<p className='input-gr-lb'>USERNAME OR EMAIL</p>
+								<input className='input' />
+							</div>
+							<div className='mt-2 relative'>
+								<p className='input-gr-lb'>PASSWORD</p>
+								<input
+									className='input'
+									type={!showPassword ? 'password' : 'text'}
+								/>
+								<span
+									className='absolute text-gray-200 text-xs right-2 bottom-2.5 cursor-pointer'
+									onClick={() => {
+										setShowPassword(!showPassword);
+									}}>
+									{!showPassword ? 'Show' : 'Hide'}
+								</span>
+							</div>
+							<a
+								className='text-xs block -mt-0.75 text-blue-500 font-semibold'
+								href='https://google.com'>
+								Lost your password ?
+							</a>
+							<button
+								className='w-full rounded text-white p-1.5 mt-4
+								bg-indigo-500 text-center text-sm font-semibold'>
+								Login
+							</button>
+							<p className='text-xs mt-1 text-gray-500'>
+								Need an account?
+								<a
+									className='ml-1 font-semibold text-blue-500'
+									href='/register'>
+									Register
+								</a>
+							</p>
+						</form>
+					</div>
+					<div className='hidden md:flex justify-center items-center p-4'>
+						<LoginSVG className='w-full' />
+					</div>
 				</div>
 			</div>
 		</div>
