@@ -7,13 +7,7 @@ module.exports = {
 		colors: {
 			primary: colors.blueGray,
 			secondary: colors.indigo,
-			black: colors.black,
-			white: colors.white,
-			gray: colors.coolGray,
-			red: colors.red,
-			yellow: colors.amber,
-			blue: colors.blue,
-			indigo: colors.indigo,
+			...colors,
 		},
 		fontSize: {
 			'2xs': ['.65rem', '0.875rem'],

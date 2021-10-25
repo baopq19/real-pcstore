@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
-export default function Login(props) {
+export default function Register(props) {
 	return (
 		<div
 			style={{
@@ -11,7 +11,7 @@ export default function Login(props) {
 				backgroundRepeat: 'norepeat',
 			}}>
 			<div className='sm:container mx-auto min-h-screen flex items-center'>
-				<LoginForm />
+				<RegisterForm />
 			</div>
 		</div>
 	);

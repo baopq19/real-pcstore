@@ -14,7 +14,7 @@
 	}
 
 	.input {
-		@apply w-full p-1.5 rounded text-white bg-primary-900 focus:outline-black;
+		@apply w-full p-1.5 rounded text-white px-2 bg-primary-900 focus:outline-black;
 	}
 
 	.active {

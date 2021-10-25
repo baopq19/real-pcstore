@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { CURRENT_USER } from '../../../util/Constant';
 
 export default function Navbar(props) {
-	const currentUser = JSON.parse(localStorage.getItem('User'));
+	const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
 	const [collapse, setCollapse] = useState(false);
 	const { active } = props;
 
 	const renderLogin = () => {
+		console.log(currentUser);
 		if (!currentUser)
 			return (
 				<a className='flex items-center mx-1.5' href='/login'>
@@ -14,7 +16,7 @@ export default function Navbar(props) {
 			);
 		//otherwise
 		return (
-			<a className='flex items-center text-gray-300' href='/logout'>
+			<a className='flex items-center mx-1.5 text-gray-300' href='/logout'>
 				Logout
 			</a>
 		);
@@ -62,9 +64,9 @@ export default function Navbar(props) {
 							onClick={() => {
 								setCollapse(!collapse);
 							}}>
-							<div className='h-0.5 w-5 mb-1 bg-white' />
-							<div className='h-0.5 w-5 mb-1 bg-white' />
-							<div className='h-0.5 w-5 bg-white' />
+							<div className='h-1 w-6 rounded mb-1 bg-white' />
+							<div className='h-1 w-6 rounded mb-1 bg-white' />
+							<div className='h-1 w-6 rounded bg-white' />
 						</div>
 					</div>
 				</div>

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
+import Register from './pages/Register/Register';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 	return (
@@ -18,8 +20,14 @@ function App() {
 					<Route exact path='/login'>
 						<Login />
 					</Route>
+
+					{/* Route Register */}
+					<Route exact path='/register'>
+						<Register />
+					</Route>
 				</Switch>
 			</Router>
+			<Toaster />
 		</div>
 	);
 }

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Footer from '../../components/shared/Footer/Footer';
 import Navbar from '../../components/shared/Navbar/Navbar';
 
 export default function DefaultLayout(props) {
@@ -6,6 +7,7 @@ export default function DefaultLayout(props) {
 		<Fragment>
 			<Navbar active={props.active} />
 			{props.children}
+			<Footer />
 		</Fragment>
 	);
 }
