@@ -16,4 +16,9 @@
 	.input {
 		@apply w-full p-1.5 rounded text-white bg-primary-900 focus:outline-black;
 	}
+
+	.active {
+		@apply border-l-4 border-indigo-600 bg-indigo-300 bg-opacity-60 pl-2
+		lg:bg-none lg:border-l-0 lg:pl-0 lg:border-b-4 lg:bg-opacity-0 lg:border-indigo-500;
+	}
 }
