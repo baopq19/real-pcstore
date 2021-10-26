@@ -5,9 +5,9 @@ import { useHistory } from 'react-router';
 import UserModel from '../../models/UserModel';
 import { ErrorToast, SuccessToast } from '../CustomToast/CustomToast';
 import { authService } from '../../services/AuthService';
+import InputPassword from '../InputPassword/InputPassword';
 
 export default function RegisterForm() {
-	const [showPassword, setShowPassword] = useState(false);
 	const [confirmPassword, setConfirmPassword] = useState('');
 
 	let history = useHistory();
@@ -71,42 +71,24 @@ export default function RegisterForm() {
 							onChange={formik.handleChange}
 						/>
 					</div>
-					<div className='mt-2 relative'>
+					<div className='mt-2'>
 						<p className='input-gr-lb'>PASSWORD</p>
-						<input
-							className='input pr-12'
-							type={!showPassword ? 'password' : 'text'}
+						<InputPassword
 							name='password'
 							value={formik.values.password}
 							onChange={formik.handleChange}
 						/>
-						<span
-							className='absolute text-gray-200 text-xs right-2 bottom-2 cursor-pointer'
-							onClick={() => {
-								setShowPassword(!showPassword);
-							}}>
-							{!showPassword ? 'Show' : 'Hide'}
-						</span>
 					</div>
 					<div className='mt-2 relative'>
 						<p className='input-gr-lb'>CONFIRM PASSWORD</p>
-						<input
-							className='input pr-12'
-							type={!showPassword ? 'password' : 'text'}
+						<InputPassword
 							name='confirmPassword'
 							value={confirmPassword}
 							onChange={handleConfirmPassword}
 						/>
-						<span
-							className='absolute text-gray-200 text-xs right-2 bottom-2 cursor-pointer'
-							onClick={() => {
-								setShowPassword(!showPassword);
-							}}>
-							{!showPassword ? 'Show' : 'Hide'}
-						</span>
 					</div>
 					<div className='mt-2'>
-						<p className='input-gr-lb'>Email</p>
+						<p className='input-gr-lb'>EMAIL</p>
 						<input
 							className='input'
 							name='email'

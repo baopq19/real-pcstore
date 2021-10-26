@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CURRENT_USER } from '../../../util/Constant';
+import DMToggler from '../../DMToggler/DMToggler';
 
 export default function Navbar(props) {
 	const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
@@ -55,7 +56,7 @@ export default function Navbar(props) {
 		<div className='bg-primary-800'>
 			<div className='flex flex-wrap lg:flex-nowrap p-2'>
 				<div className='w-full flex lg:w-2/12'>
-					<div className='w-10/12 lg:w-full'>
+					<div className='w-10/12 lg:w-full text-center lg:text-left'>
 						<a
 							href='/'
 							className='text-white text-xl hover:text-red-500 
@@ -88,7 +89,10 @@ export default function Navbar(props) {
 							{navMenu.render()}
 						</ul>
 					</div>
-					<div className='lg:block lg:w-2/12'>
+					<div className='flex flex-col lg:flex-row lg:justify-end lg:w-2/12'>
+						<div className='mb-2 ml-1 lg:mb-1 lg:mr-8'>
+							<DMToggler />
+						</div>
 						<div
 							className='flex h-full lg:justify-end item-center
 						text-gray-200 font-semibold'>

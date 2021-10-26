@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LoginSVG from '../../assets/icons/LoginSVG';
 import { useFormik } from 'formik';
 import { useHistory } from 'react-router';
@@ -6,9 +6,9 @@ import UserModel from '../../models/UserModel';
 import { authService } from '../../services/AuthService';
 import toast from 'react-hot-toast';
 import { SuccessToast, ErrorToast } from '../CustomToast/CustomToast';
+import InputPassword from '../InputPassword/InputPassword';
 
 export default function LoginForm(props) {
-	const [showPassword, setShowPassword] = useState(false);
 	let history = useHistory();
 	const onRegister = () => {
 		history.push('/register');
@@ -50,7 +50,7 @@ export default function LoginForm(props) {
 				</p>
 				<form onSubmit={formik.handleSubmit}>
 					<div>
-						<p className='input-gr-lb'>USERNAME OR EMAIL</p>
+						<p className='input-gr-lb dark:text-red-500'>USERNAME OR EMAIL</p>
 						<input
 							className='input'
 							name='username'
@@ -58,22 +58,13 @@ export default function LoginForm(props) {
 							onChange={formik.handleChange}
 						/>
 					</div>
-					<div className='mt-2 relative'>
+					<div className='mt-2'>
 						<p className='input-gr-lb'>PASSWORD</p>
-						<input
-							className='input'
-							type={!showPassword ? 'password' : 'text'}
+						<InputPassword
 							name='password'
 							value={formik.values.password}
 							onChange={formik.handleChange}
 						/>
-						<span
-							className='absolute text-gray-200 text-xs right-2 bottom-2.5 cursor-pointer'
-							onClick={() => {
-								setShowPassword(!showPassword);
-							}}>
-							{!showPassword ? 'Show' : 'Hide'}
-						</span>
 					</div>
 					<a
 						className='text-xs block -mt-0.75 text-blue-500 font-semibold'

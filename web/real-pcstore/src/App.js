@@ -5,10 +5,12 @@ import Home from './pages/Home/Home';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
 import Register from './pages/Register/Register';
 import { Toaster } from 'react-hot-toast';
+import { useEffect, useState } from 'react';
+import { DARK_MODE } from './util/Constant';
 
 function App() {
 	return (
-		<div className='App'>
+		<div className={`App `}>
 			<Router>
 				<Switch>
 					<Route exact path='/'>
