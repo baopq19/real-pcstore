@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
 const itemRouter = require('./routes/item');
+const cors = require('cors');
 
 const DB_NAME = 'real-pcstore';
 
@@ -28,6 +29,7 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(`/api/auth`, authRouter);
 app.use(`/api/items`, itemRouter);

@@ -7,7 +7,6 @@ export default function Navbar(props) {
 	const { active } = props;
 
 	const renderLogin = () => {
-		console.log(currentUser);
 		if (!currentUser)
 			return (
 				<a className='flex items-center mx-1.5' href='/login'>
@@ -16,9 +15,11 @@ export default function Navbar(props) {
 			);
 		//otherwise
 		return (
-			<a className='flex items-center mx-1.5 text-gray-300' href='/logout'>
+			<span
+				className='flex items-center mx-1.5 text-gray-300 cursor-pointer'
+				onClick={handleLogout}>
 				Logout
-			</a>
+			</span>
 		);
 	};
 
@@ -43,6 +44,11 @@ export default function Navbar(props) {
 				);
 			});
 		},
+	};
+
+	const handleLogout = () => {
+		localStorage.removeItem(CURRENT_USER);
+		window.location.reload();
 	};
 
 	return (

@@ -2,17 +2,17 @@ import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router';
+import UserModel from '../../models/UserModel';
 import { ErrorToast, SuccessToast } from '../CustomToast/CustomToast';
+import { authService } from '../../services/AuthService';
 
 export default function RegisterForm() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const notify = () =>
-		toast.custom(<ErrorToast message='Success, welcome to the family.' />);
 
 	let history = useHistory();
 	const onLogin = () => {
-		history.push('/login');
+		history.goBack();
 	};
 
 	let handleConfirmPassword = (e) => {
@@ -25,13 +25,33 @@ export default function RegisterForm() {
 			password: '',
 			email: '',
 		},
-		validate: (values) => {
-			console.log('Validating', values);
-		},
-		onSubmit: (values) => {
+		validate: (values) => {},
+		onSubmit: async (values) => {
 			if (values.password !== confirmPassword)
 				return alert('Password confirm does not correct');
-			console.log('Submited', values);
+			try {
+				const user = new UserModel(values);
+				const result = await authService.register(user);
+				//success
+				if (result.data?.success) {
+					//SET CurrentUser success
+					user.setAccessToken(result.data.accessToken);
+					if (user.setCurrentUser()) {
+						history.push('/');
+						toast.custom(
+							<SuccessToast
+								message={'WELCOME, Let find you some badass gear!'}
+							/>
+						);
+					}
+				}
+			} catch (error) {
+				console.error(error.response);
+				const errorMessage = error.response?.data?.message;
+				if (errorMessage) {
+					toast.custom(<ErrorToast message={errorMessage} />);
+				}
+			}
 		},
 	});
 
@@ -96,15 +116,15 @@ export default function RegisterForm() {
 					</div>
 					<button
 						className='w-full rounded text-white p-1.5 mt-4
-								bg-indigo-500 text-center text-sm font-semibold'>
+								bg-indigo-500 text-center text-sm font-semibold'
+						type='submit'>
 						Create
 					</button>
 					<p className='text-xs mt-1 text-gray-500'>
 						Got ya account?
 						<span
 							onClick={() => {
-								// onLogin();
-								notify();
+								onLogin();
 							}}
 							className='ml-1 font-semibold text-blue-500 cursor-pointer'>
 							Login

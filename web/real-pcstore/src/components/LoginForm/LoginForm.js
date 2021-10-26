@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import LoginSVG from '../../assets/icons/LoginSVG';
 import { useFormik } from 'formik';
 import { useHistory } from 'react-router';
+import UserModel from '../../models/UserModel';
+import { authService } from '../../services/AuthService';
+import toast from 'react-hot-toast';
+import { SuccessToast, ErrorToast } from '../CustomToast/CustomToast';
 
 export default function LoginForm(props) {
 	const [showPassword, setShowPassword] = useState(false);
@@ -15,11 +19,26 @@ export default function LoginForm(props) {
 			username: '',
 			password: '',
 		},
-		validate: (values) => {
-			console.log('validated', values);
-		},
-		onSubmit: (values) => {
-			console.log('Submited', values);
+		validate: (values) => {},
+		onSubmit: async (values) => {
+			const user = new UserModel(values);
+			try {
+				const result = await authService.login(user);
+				user.setAccessToken(result.data.accessToken);
+				if (result.data?.success) {
+					//SET CURRENT USER
+					if (user.setCurrentUser()) {
+						toast.custom(<SuccessToast message='Welcome, my man!' />);
+						history.goBack();
+					}
+				}
+			} catch (error) {
+				console.error(error);
+				const errorMessage = error.response?.message;
+				if (errorMessage) {
+					toast.custom(<ErrorToast message={error.response.message} />);
+				}
+			}
 		},
 	});
 
@@ -63,7 +82,8 @@ export default function LoginForm(props) {
 					</a>
 					<button
 						className='w-full rounded text-white p-1.5 mt-4
-								bg-indigo-500 text-center text-sm font-semibold'>
+								bg-indigo-500 text-center text-sm font-semibold'
+						type='submit'>
 						Login
 					</button>
 					<p className='text-xs mt-1 text-gray-500'>
