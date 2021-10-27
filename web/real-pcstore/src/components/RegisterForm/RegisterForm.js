@@ -56,9 +56,13 @@ export default function RegisterForm() {
 	});
 
 	return (
-		<div className='flex w-full sm:max-w-lg mx-auto p-4 rounded bg-primary-800'>
+		<div
+			className='flex items-center w-full sm:max-w-lg mx-auto p-4 rounded
+						transition-all duration-500 min-h-screen sm:min-h-0
+						bg-gray-100 shadow-xl
+						dark:bg-gray-800'>
 			<div className='w-full p-2'>
-				<p className='text-xl text-bold text-center text-white mb-4'>
+				<p className='text-xl text-bold text-center mb-4 text-black dark:text-white'>
 					Create an account
 				</p>
 				<form onSubmit={formik.handleSubmit}>

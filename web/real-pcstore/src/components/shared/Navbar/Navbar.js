@@ -54,10 +54,14 @@ export default function Navbar(props) {
 	};
 
 	return (
-		<div className='bg-primary-800'>
+		<div
+			className='bg-gradient-to-r from-blue-700 to-indigo-600  text-black
+						dark:bg-gray-800 dark:text-white'>
 			<div className='flex flex-wrap lg:flex-nowrap p-2'>
 				<div className='w-full flex lg:w-2/12'>
-					<div className='w-10/12 lg:w-full text-center lg:text-left'>
+					<div
+						className='w-10/12 lg:w-full lg:text-left
+										flex items-end text-center'>
 						<a
 							href='/'
 							className='text-white text-xl hover:text-red-500 
@@ -91,7 +95,9 @@ export default function Navbar(props) {
 						</ul>
 					</div>
 					<div className='flex flex-col lg:flex-row lg:justify-end lg:w-2/12'>
-						<div className='mb-2 ml-1 lg:mb-1 lg:mr-8'>
+						<div
+							className='lg:flex lg:items-center lg:justify-center lg:mr-8 lg:mb-0
+										mb-2 ml-1.5'>
 							<DMToggler />
 						</div>
 						<div

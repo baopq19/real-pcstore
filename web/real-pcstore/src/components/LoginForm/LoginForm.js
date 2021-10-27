@@ -19,7 +19,9 @@ export default function LoginForm(props) {
 			username: '',
 			password: '',
 		},
-		validate: (values) => {},
+		validate: (values) => {
+			//validate
+		},
 		onSubmit: async (values) => {
 			const user = new UserModel(values);
 			try {
@@ -43,14 +45,21 @@ export default function LoginForm(props) {
 	});
 
 	return (
-		<div className='flex w-full sm:max-w-2xl mx-auto p-4 rounded bg-primary-800'>
+		<div
+			className='flex w-full items-center sm:max-w-2xl mx-auto p-4 rounded
+							transition-all duration-500 min-h-screen sm:min-h-0
+							bg-gray-100 shadow-xl
+							dark:bg-gray-800'>
 			<div className='w-full md:w-7/12 p-2'>
-				<p className='text-xl text-bold text-left text-white mb-4'>
+				<p
+					className='text-xl text-bold text-left mb-4
+								text-black
+								dark:text-white'>
 					Athur! Shalom
 				</p>
 				<form onSubmit={formik.handleSubmit}>
 					<div>
-						<p className='input-gr-lb dark:text-red-500'>USERNAME OR EMAIL</p>
+						<p className='input-gr-lb'>USERNAME OR EMAIL</p>
 						<input
 							className='input'
 							name='username'
