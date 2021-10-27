@@ -57,12 +57,9 @@ export default function RegisterForm() {
 
 	return (
 		<div
-			className='flex items-center w-full sm:max-w-lg mx-auto p-4 rounded
-						transition-all duration-500 min-h-screen sm:min-h-0
-						bg-gray-100 shadow-xl
-						dark:bg-gray-800'>
+			className='flex items-center w-full min-h-screen p-4 mx-auto transition-all duration-500 bg-gray-100 rounded shadow-xl sm:max-w-lg sm:min-h-0 dark:bg-gray-800'>
 			<div className='w-full p-2'>
-				<p className='text-xl text-bold text-center mb-4 text-black dark:text-white'>
+				<p className='mb-4 text-xl text-center text-black text-bold dark:text-white'>
 					Create an account
 				</p>
 				<form onSubmit={formik.handleSubmit}>
@@ -83,7 +80,7 @@ export default function RegisterForm() {
 							onChange={formik.handleChange}
 						/>
 					</div>
-					<div className='mt-2 relative'>
+					<div className='relative mt-2'>
 						<p className='input-gr-lb'>CONFIRM PASSWORD</p>
 						<InputPassword
 							name='confirmPassword'
@@ -106,7 +103,7 @@ export default function RegisterForm() {
 						type='submit'>
 						Create
 					</button>
-					<p className='text-xs mt-1 text-gray-500'>
+					<p className='mt-1 text-xs text-gray-500'>
 						Got ya account?
 						<span
 							onClick={() => {

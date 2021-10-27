@@ -19,7 +19,7 @@ export default function DMToggler() {
 	};
 
 	return (
-		<div className='cursor-pointer text-white' onClick={handleToggle}>
+		<div className='text-white cursor-pointer' onClick={handleToggle}>
 			{appearance === LIGHT_MODE ? 'Go Dark' : 'Turn light'}
 		</div>
 	);

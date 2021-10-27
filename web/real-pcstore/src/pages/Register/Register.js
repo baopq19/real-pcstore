@@ -16,8 +16,8 @@ export default function Register(props) {
 				backgroundPosition: 'center',
 				backgroundRepeat: 'norepeat',
 			}}>
-			<div className='sm:container mx-auto min-h-screen flex items-center relative'>
-				<div className='absolute sm:hidden left-1/2 top-4 transform -translate-x-1/2 text-xl font-semibold'>
+			<div className='relative flex items-center min-h-screen mx-auto sm:container'>
+				<div className='absolute text-xl font-semibold transform -translate-x-1/2 sm:hidden left-1/2 top-4'>
 					Real-PCStore
 				</div>
 				<RegisterForm />

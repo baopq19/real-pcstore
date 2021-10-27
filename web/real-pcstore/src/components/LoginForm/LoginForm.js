@@ -46,15 +46,10 @@ export default function LoginForm(props) {
 
 	return (
 		<div
-			className='flex w-full items-center sm:max-w-2xl mx-auto p-4 rounded
-							transition-all duration-500 min-h-screen sm:min-h-0
-							bg-gray-100 shadow-xl
-							dark:bg-gray-800'>
-			<div className='w-full md:w-7/12 p-2'>
+			className='flex items-center w-full min-h-screen p-4 mx-auto transition-all duration-500 bg-gray-100 rounded shadow-xl sm:max-w-2xl sm:min-h-0 dark:bg-gray-800'>
+			<div className='w-full p-2 md:w-7/12'>
 				<p
-					className='text-xl text-bold text-left mb-4
-								text-black
-								dark:text-white'>
+					className='mb-4 text-xl text-left text-black text-bold dark:text-white'>
 					Athur! Shalom
 				</p>
 				<form onSubmit={formik.handleSubmit}>
@@ -86,7 +81,7 @@ export default function LoginForm(props) {
 						type='submit'>
 						Login
 					</button>
-					<p className='text-xs mt-1 text-gray-500'>
+					<p className='mt-1 text-xs text-gray-500'>
 						Need an account?
 						<span
 							onClick={onRegister}
@@ -96,7 +91,7 @@ export default function LoginForm(props) {
 					</p>
 				</form>
 			</div>
-			<div className='hidden md:flex justify-center items-center p-4'>
+			<div className='items-center justify-center hidden p-4 md:flex'>
 				<LoginSVG className='w-full' />
 			</div>
 		</div>

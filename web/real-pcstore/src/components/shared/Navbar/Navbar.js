@@ -54,14 +54,10 @@ export default function Navbar(props) {
 	};
 
 	return (
-		<div
-			className='bg-gradient-to-r from-blue-700 to-indigo-600  text-black
-						dark:bg-gray-800 dark:text-white'>
-			<div className='flex flex-wrap lg:flex-nowrap p-2'>
-				<div className='w-full flex lg:w-2/12'>
-					<div
-						className='w-10/12 lg:w-full lg:text-left
-										flex items-end text-center'>
+		<div className='text-black bg-gradient-to-r from-blue-700 to-indigo-600 dark:bg-gray-800 dark:text-white'>
+			<div className='flex flex-wrap p-2 lg:flex-nowrap'>
+				<div className='flex w-full lg:w-2/12'>
+					<div className='flex items-end w-10/12 text-center lg:w-full lg:text-left'>
 						<a
 							href='/'
 							className='text-white text-xl hover:text-red-500 
@@ -70,15 +66,15 @@ export default function Navbar(props) {
 						</a>
 					</div>
 					{/* Collapse burger */}
-					<div className='d-block w-2/12 lg:hidden flex justify-end items-center'>
+					<div className='flex items-center justify-end w-2/12 d-block lg:hidden'>
 						<div
 							className='mr-1.5 cursor-pointer'
 							onClick={() => {
 								setCollapse(!collapse);
 							}}>
-							<div className='h-1 w-6 rounded mb-1 bg-white' />
-							<div className='h-1 w-6 rounded mb-1 bg-white' />
-							<div className='h-1 w-6 rounded bg-white' />
+							<div className='w-6 h-1 mb-1 bg-white rounded' />
+							<div className='w-6 h-1 mb-1 bg-white rounded' />
+							<div className='w-6 h-1 bg-white rounded' />
 						</div>
 					</div>
 				</div>
@@ -88,9 +84,7 @@ export default function Navbar(props) {
 					
 					${!collapse ? 'max-h-0' : 'max-h-44 mt-2'}`}>
 					<div className='w-12/12 lg:w-10/12'>
-						<ul
-							className='flex h-full justify-center text-white
-						flex-col lg:flex-row mt-2 lg:mt-0'>
+						<ul className='flex flex-col justify-center h-full mt-2 text-white lg:flex-row lg:mt-0'>
 							{navMenu.render()}
 						</ul>
 					</div>
@@ -100,9 +94,7 @@ export default function Navbar(props) {
 										mb-2 ml-1.5'>
 							<DMToggler />
 						</div>
-						<div
-							className='flex h-full lg:justify-end item-center
-						text-gray-200 font-semibold'>
+						<div className='flex h-full font-semibold text-gray-200 lg:justify-end item-center'>
 							{renderLogin()}
 						</div>
 					</div>
