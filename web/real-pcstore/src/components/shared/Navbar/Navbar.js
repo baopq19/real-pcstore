@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CURRENT_USER } from '../../../util/Constant';
 import DMToggler from '../../DMToggler/DMToggler';
 
@@ -10,9 +11,9 @@ export default function Navbar(props) {
 	const renderLogin = () => {
 		if (!currentUser)
 			return (
-				<a className='flex items-center mx-1.5' href='/login'>
+				<Link className='flex items-center mx-1.5' to='/login'>
 					Login
-				</a>
+				</Link>
 			);
 		//otherwise
 		return (

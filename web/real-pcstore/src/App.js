@@ -5,10 +5,17 @@ import Home from './pages/Home/Home';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
 import Register from './pages/Register/Register';
 import { Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
-import { DARK_MODE } from './util/Constant';
+import { APPEARANCE, DARK_MODE, LIGHT_MODE } from './util/Constant';
 
 function App() {
+	const userAppearance = localStorage.getItem(APPEARANCE);
+	const htmlEle = document.getElementsByTagName('html')[0];
+	if (userAppearance === DARK_MODE) {
+		htmlEle.classList.add('dark');
+	} else if (userAppearance !== LIGHT_MODE) {
+		localStorage.setItem(APPEARANCE, LIGHT_MODE);
+	}
+
 	return (
 		<div className={`App `}>
 			<Router>
