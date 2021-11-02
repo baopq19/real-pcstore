@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CURRENT_USER } from '../../../util/Constant';
 import DMToggler from '../../DMToggler/DMToggler';
+import Logo from '../../Logo/Logo';
 
 export default function Navbar(props) {
 	const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER));
@@ -11,7 +12,7 @@ export default function Navbar(props) {
 	const renderLogin = () => {
 		if (!currentUser)
 			return (
-				<Link className='flex items-center mx-1.5' to='/login'>
+				<Link className='flex items-center mx-1.5 text-white' to='/login'>
 					Login
 				</Link>
 			);
@@ -32,8 +33,8 @@ export default function Navbar(props) {
 			{ text: 'Your storage', path: '/' },
 		],
 
-		render: () => {
-			return navMenu.items.map((item, index) => {
+		render: function () {
+			return this.items.map((item, index) => {
 				let activeClass = '';
 				if (active === item.text) activeClass = 'active';
 
@@ -54,16 +55,11 @@ export default function Navbar(props) {
 	};
 
 	return (
-		<div className='text-black bg-gradient-to-r from-blue-700 to-indigo-600 dark:bg-gray-800 dark:text-white'>
+		<div className='bg-gradient-to-r from-blue-700 to-indigo-600 dark:bg-gray-800'>
 			<div className='flex flex-wrap p-2 lg:flex-nowrap'>
 				<div className='flex w-full lg:w-2/12'>
 					<div className='flex items-end w-10/12 text-center lg:w-full lg:text-left'>
-						<a
-							href='/'
-							className='text-white text-xl hover:text-red-500 
-							transition-all duration-500 ml-1.5'>
-							Real-PCShop
-						</a>
+						<Logo />
 					</div>
 					{/* Collapse burger */}
 					<div className='flex items-center justify-end w-2/12 d-block lg:hidden'>

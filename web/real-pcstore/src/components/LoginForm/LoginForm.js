@@ -23,6 +23,7 @@ export default function LoginForm(props) {
 			//validate
 		},
 		onSubmit: async (values) => {
+			console.log('Submit', values);
 			const user = new UserModel(values);
 			try {
 				const result = await authService.login(user);
@@ -45,11 +46,9 @@ export default function LoginForm(props) {
 	});
 
 	return (
-		<div
-			className='flex items-center w-full min-h-screen p-4 mx-auto transition-all duration-500 bg-gray-100 rounded shadow-xl sm:max-w-2xl sm:min-h-0 dark:bg-gray-800'>
+		<div className='flex items-center w-full min-h-screen p-4 mx-auto transition-all duration-500 bg-gray-100 rounded shadow-xl sm:max-w-2xl sm:min-h-0 dark:bg-gray-800'>
 			<div className='w-full p-2 md:w-7/12'>
-				<p
-					className='mb-4 text-xl text-left text-black text-bold dark:text-white'>
+				<p className='mb-4 text-xl text-left text-black text-bold dark:text-white'>
 					Athur! Shalom
 				</p>
 				<form onSubmit={formik.handleSubmit}>

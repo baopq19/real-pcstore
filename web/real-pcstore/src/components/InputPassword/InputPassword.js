@@ -7,14 +7,16 @@ export default function InputPassword(props) {
 		color: '#818CF8',
 		fontSize: '20px',
 	};
-	const { add_class } = props;
+
+	//split props to add_class hand the others
+	const { add_class, ...restProps } = props;
 
 	return (
 		<div className='relative'>
 			<input
 				className={`input pr-12 ${add_class}`}
 				type={!showPassword ? 'password' : 'text'}
-				{...props}
+				{...restProps}
 			/>
 			<span
 				className='absolute text-gray-200 text-xs right-2 bottom-2.5 cursor-pointer'

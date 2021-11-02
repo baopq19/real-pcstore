@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middleware/auth');
+const customLabels = require('./../models/Response');
 
 const Item = require('../models/Item');
 
@@ -9,6 +10,8 @@ const Item = require('../models/Item');
 // @access private
 router.post('/', verifyToken, async (req, res) => {
 	const { item } = req.body;
+	const count = await Item.count();
+	item._id = count ?? 0;
 
 	if (!item.name)
 		return res
@@ -37,14 +40,11 @@ router.post('/', verifyToken, async (req, res) => {
 // @access public
 router.get('/', verifyToken, async (req, res) => {
 	try {
-		const items = await Item.find();
-		const count = await Item.count();
-
-		return res.json({
+		const { page, limit } = req.query;
+		const result = await Item.paginate({}, { page, limit, customLabels });
+		res.json({
 			success: true,
-			message: 'Success',
-			count: count,
-			items: items,
+			...result,
 		});
 	} catch (error) {
 		console.log(error);
