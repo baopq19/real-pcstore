@@ -8,9 +8,7 @@ export default function Home() {
 				<title>Next-PCStar</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<DefaultLayout>
-				<div>a</div>
-			</DefaultLayout>
+			<DefaultLayout></DefaultLayout>
 		</div>
 	);
 }

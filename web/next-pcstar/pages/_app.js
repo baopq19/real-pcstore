@@ -1,6 +1,6 @@
 import { APPEARANCE, DARK_MODE, LIGHT_MODE } from '../util/Constant';
-import { useEffect } from 'react';
 import './../styles/global.css';
+import 'material-icons/iconfont/filled.css';
 
 function MyApp({ Component, pageProps }) {
 	if (typeof window !== 'undefined') {

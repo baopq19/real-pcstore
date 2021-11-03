@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { APPEARANCE, DARK_MODE, LIGHT_MODE } from '../../util/Constant';
 
 export default function DMToggler() {
@@ -9,7 +9,6 @@ export default function DMToggler() {
 		userAppearance = localStorage.getItem(APPEARANCE);
 		htmlEle = document.documentElement;
 	}
-
 	const [appearance, setAppearance] = useState(`${userAppearance}`); //Create state with appearance in local storage
 
 	const handleToggle = () => {
@@ -23,9 +22,23 @@ export default function DMToggler() {
 		}
 	};
 
+	const renderToogle = () => {
+		return appearance === LIGHT_MODE ? (
+			<span className='material-icons' style={{ fontSize: '1.5rem' }}>
+				dark_mode
+			</span>
+		) : (
+			<span className='material-icons' style={{ fontSize: '1.5rem' }}>
+				light_mode
+			</span>
+		);
+	};
+
 	return (
-		<div className='text-white cursor-pointer' onClick={handleToggle}>
-			{appearance === LIGHT_MODE ? 'Go Dark' : 'Turn light'}
+		<div
+			className='flex items-center text-white cursor-pointer select-none'
+			onClick={handleToggle}>
+			{renderToogle()}
 		</div>
 	);
 }

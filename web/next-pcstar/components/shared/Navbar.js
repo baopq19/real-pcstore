@@ -3,6 +3,9 @@ import { CURRENT_USER } from '../../util/Constant';
 import Link from 'next/link';
 import DMToggler from './DMToggler';
 import Logo from './Logo';
+import dynamic from 'next/dynamic';
+
+const DMTogglerCSR = dynamic(() => import('./DMToggler'), { ssr: false });
 
 export default function Navbar(props) {
 	let currentUser;
@@ -16,8 +19,8 @@ export default function Navbar(props) {
 	const renderLogin = () => {
 		if (!currentUser)
 			return (
-				<Link className='flex items-center mx-1.5 text-white' href='/login'>
-					Login
+				<Link href='/login' passHref>
+					<a className='flex items-center mx-1.5'>Login</a>
 				</Link>
 			);
 		//otherwise
@@ -59,13 +62,13 @@ export default function Navbar(props) {
 	};
 
 	return (
-		<div className='bg-gradient-to-r from-blue-700 to-indigo-600 dark:from-gray-800'>
+		<div className='bg-red-600 dark:bg-blue-600'>
 			<div className='flex flex-wrap p-2 lg:flex-nowrap'>
 				<div className='flex w-full lg:w-2/12'>
-					<div className='flex items-end w-10/12 text-center lg:w-full lg:text-left'>
+					<div className='flex items-center justify-center w-10/12 ml-4 lg:justify-start lg:ml-0 lg:w-full'>
 						<Logo />
 					</div>
-					{/* Collapse burger */}
+					{/* Collapse burger only display when break lg */}
 					<div className='flex items-center justify-end w-2/12 d-block lg:hidden'>
 						<div
 							className='mr-1.5 cursor-pointer'
@@ -92,7 +95,7 @@ export default function Navbar(props) {
 						<div
 							className='lg:flex lg:items-center lg:justify-center lg:mr-8 lg:mb-0
 										mb-2 ml-1.5'>
-							<DMToggler />
+							<DMTogglerCSR />
 						</div>
 						<div className='flex h-full font-semibold text-gray-200 lg:justify-end item-center'>
 							{renderLogin()}

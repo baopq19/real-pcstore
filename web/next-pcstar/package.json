@@ -7,9 +7,14 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@ant-design/icons": "^4.7.0",
+		"axios": "^0.24.0",
+		"formik": "^2.2.9",
+		"material-icons": "^1.10.1",
 		"next": "latest",
 		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
+		"react-dom": "^17.0.2",
+		"react-hot-toast": "^2.1.1"
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.2.6",
